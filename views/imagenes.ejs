@@ -1,0 +1,50 @@
+<%- include('header') -%>
+<title>Pagina Imagenes</title>
+<body>
+    <h1>Pagina Imagenes  <%= imagenes.length %></h1>
+    <div class="table-responsive-sm" style="width: 750px;">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>N°</th>
+                <th>Imagen</th>
+                <th>Destacado</th>
+                <th class="d-print-none"> <a class="btn btn-sm btn-success" href="/imgagg">Agregar</a> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <% if (imagenes) { %>
+                    <% for (let i = 0; i < imagenes.length; i++){  %>
+                        <% if (imagenes) { %>
+                            <tr>
+                                <td><%= (i + 1) %></td>
+                                <td><img src="<%= imagenes[i].url %>"></td>
+                                <td><%= imagenes[i].destacado %></td>
+                                <td> 
+                                    <div class="input-group">
+                                        <td class="fijo">
+                                        <a href="/imgdelete/<%= imagenes[i].id%>" class="btn btn-sm btn-danger">Eliminar</a>
+                                    </td>
+                                        <td class="fijo">
+                                        <a href="/imgedit/<%= imagenes[i].id%>" class="btn btn-sm btn-warning">Actualizar</a>
+                                    </td>
+                                    </div>
+                                </td>
+                            </tr>    
+                        <% } %>
+                    <% } %>
+                <% } else { %>
+                        <tr>
+                            <th>No hay imagenes en el sistema</th>
+                        </tr>
+                    <% }   %>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
+
+<%- include('footer') -%>

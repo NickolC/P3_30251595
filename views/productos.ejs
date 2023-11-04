@@ -1,0 +1,57 @@
+<%- include('header') -%>
+<title>Pagina Productos</title>
+<body>
+    <h1>Pagina Productos <%= productos.length %></h1>
+    <div class="table-responsive-sm" style="width: 750px;">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>N°</th>
+                <th>Codigo</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Marca</th>
+                <th>Tono</th>
+                <th>Descripcion</th>
+                <th class="d-print-none"> <a class="btn btn-sm btn-success" href="/prdagg">Agregar</a> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <% if (productos) { %>
+                    <% for (let i = 0; i < productos.length; i++){  %>
+                        <% if (productos) { %>
+                            <tr>
+                                <td><%= (i + 1) %></td>
+                                <td><%= productos[i].codigo %></td>
+                                <td><%= productos[i].nombre %></td>
+                                <td><%= productos[i].precio %></td>
+                                <td><%= productos[i].marca %></td>
+                                <td><%= productos[i].tono %></td>
+                                <td><%= productos[i].descripcion %></td>
+                                <td> 
+                                    <div class="input-group">
+                                        <td class="fijo">
+                                        <a href="/prddelete/<%= productos[i].id%>" class="btn btn-sm btn-danger">Eliminar</a>
+                                    </td>
+                                        <td class="fijo">
+                                        <a href="/prdedit/<%= productos[i].id%>" class="btn btn-sm btn-warning">Actualizar</a>
+                                    </td>
+                                    </div>
+                                </td>
+                            </tr>    
+                        <% } %>
+                    <% } %>
+                <% } else { %>
+                        <tr>
+                            <th>No hay productos en el sistema</th>
+                        </tr>
+                    <% }   %>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+<%- include('footer') -%>

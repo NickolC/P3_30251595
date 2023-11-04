@@ -1,0 +1,31 @@
+<%- include('header') -%>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Categoria</title>
+</head>
+<body>
+    <h1>Editar Categoria</h1>
+    <div>
+        <form action="/updatectg/<%= categorias.id %>" method="post">
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="nombre">Nombre</label>
+                <div class="col-sm-8">
+                <input autofocus class="form-control" type="text" name="nombre" id="nombre" value="<%= categorias.nombre %>" required maxlength="25" minlength="4">
+                </div>
+            </div>
+            <div class="col-form-label col-sm-15">
+                <input type="submit" value="actualizar" class="btn btn-default btn-success">
+                <a class="btn btn-outline-dark cancel" href="/categorias">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+
+<%- include('footer') -%>

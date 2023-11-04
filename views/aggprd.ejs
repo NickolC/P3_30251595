@@ -1,0 +1,64 @@
+<%- include('header') -%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Producto</title>
+</head>
+<body>
+    <div>
+        <form action="/aggprd" method="post">
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="nombre">Nombre</label>
+                <input autofocus type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre del producto" required maxlength="25" minlength="3">
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="codigo">Codigo</label>
+                <input type="number" name="codigo" id="codigo" placeholder="Ingrese el codigo del producto" required>
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="precio">Precio</label>
+                <input type="number" name="precio" id="precio" placeholder="Ingrese el precio del producto" required>
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="marca">Marca</label>
+                <input type="text" name="marca" id="marca" placeholder="Ingrese la marca del producto" required maxlength="25" minlength="4">
+            </div>
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="tono">Tono</label>
+                <input type="text" name="tono" id="tono" placeholder="Ingrese el tono del producto" required maxlength="25" minlength="4">
+            </div>
+
+            <div class="form-group row">
+            <label class="col-form-label col-sm-2" for="categoria">Categoria</label>
+            <select name="categoria" id="categoria">
+                <option value="" >--Seleccione--</option>
+                <% if (categorias) { %>
+                    <% for (let i = 0; i < categorias.length; i++){  %>
+                        <% if (categorias) { %>
+                            <option value="<%= categorias[i].id %>" id="categoria_id" name="categoria_id"><%= categorias[i].nombre %></option>
+    
+                        <% } %>
+                    <% } %>
+                <% } else { %>
+                            <option value="">No existen categorias en el sistema</option>
+                    <% }   %>
+            </select>
+            </div>
+            
+            <div class="form-group row">
+            <label class="col-form-label col-sm-2" for="descripcion">Descripcion</label>
+            <textarea class="form-control" cols="20" name="descripcion" placeholder="Ingrese la descripcion del producto" required maxlength="32000" rows="7"></textarea>
+            </div>
+            <div class="col-sm-20">
+                <input type="submit" value="Crear Producto" class="btn btn-default btn-success">
+                <a class="btn btn-outline-dark cancel" href="/productos">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+<%- include('footer') -%>

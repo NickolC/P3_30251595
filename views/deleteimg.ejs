@@ -1,0 +1,27 @@
+<%- include('header') -%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Imagen</title>
+</head>
+<body>
+    <div>
+        <h1>¿Está seguro de eliminar esta Imagen?</h1>
+        <form action="/deleteimg/<%= imagenes.id %>" method="get">
+            <img src="<%= imagenes.url %>">
+            <h4><%= imagenes.destacado %></h4>
+
+
+            <div class="col-sm-10">
+                <input type="submit" value="eliminar imagen" class="btn btn-default btn-danger">
+                <a class="btn btn-outline-dark cancel" href="/imagenes">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+<%- include('footer') -%>

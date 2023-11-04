@@ -1,0 +1,52 @@
+<%- include('header') -%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Imagenes</title>
+</head>
+<body>
+    <div>
+        <form action="/aggimg" method="post">
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2" for="url">Url</label>
+                <input type="text" name="url" id="url" placeholder="Ingrese la url de la imagen" required maxlength="500" minlength="3">
+            </div>
+
+            <div class="form-group row">
+            <label class="col-form-label col-sm-2" for="destacado">Destacado</label>
+            <select name="destacado" id="destacado">
+                <option value="">--Seleccione--</option>
+                <option value="Si">Si</option>
+                <option value="No">NO</option>
+            </select>
+            </div>
+
+            <div class="form-group row">
+            <label class="col-form-label col-sm-2" for="producto">Producto</label>
+            <select name="producto" id="producto">
+                <option value="" >--Seleccione--</option>
+                <% if (productos) { %>
+                    <% for (let i = 0; i < productos.length; i++){  %>
+                        <% if (productos) { %>
+                            <option value="<%= productos[i].id %>" id="producto_id" name="producto_id"><%= productos[i].nombre %></option> 
+                        <% } %>
+                    <% } %>
+                <% } else { %>
+                            <option value="">No existen productos en el sistema</option>
+                    <% }   %>
+            </select>
+            </div>
+            <div class="col-sm-15">
+                <input type="submit" value="Crear Imagen" class="btn btn-default btn-success">
+                <a class="btn btn-outline-dark cancel" href="/imagenes">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+<%- include('footer') -%>

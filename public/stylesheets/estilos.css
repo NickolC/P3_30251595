@@ -1,0 +1,34 @@
+body{
+    width: 750px;
+    margin: 0 auto;
+    background: peachpuff;
+}
+h1{
+    text-align: center;
+}
+
+.navbar{
+    width: 750px;
+    border: solid 1px;
+    border-color: #BD323A;
+}
+.fijo{
+    width: 35px;
+}
+
+p{
+    text-align: justify;
+}
+
+
+footer{
+    width: 750px;
+    border: solid 1px;
+    border-color: #BD323A;
+}
+
+address{
+    padding-top: 15px;
+    font-family: 'Times New Roman';
+    text-align: center;
+}

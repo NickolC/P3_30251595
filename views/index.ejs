@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/index.css">
+  <title>Inicio de Sesion</title>
+</head>
   <body>
-    <h1><%= title %></h1>
-    <p>Presentacion</p>
-    <p>Nombre y Apellido: Nickol Carrasquel</p>
-    <p>Cedula: 30.251.595</p>
-    <p>Seccion: 4</p>
-    <p></p>
+    <form name="formulario" action="/login" method="post">
+        <table class="form-register">
+          <caption align="top"><h1>MakeUp Valenciano</h1></caption>
+          <tr>
+            <td class="texto"><h4>Usuario:</h4></td>
+          </tr>
+          <tr>
+              <td><input class="control" type="email" name="user" id="user" maxlength="20" placeholder="Ingrese el Usuario" required></td>
+          </tr> 
+          <tr>
+            <td class="texto"><h4>Contraseña:</h4></td>
+          </tr>
+          <tr>
+              <td><input class="control" type="password" name="password" id="password" minlength="6" maxlength="10" placeholder="Ingrese la Contraseña" required></td>
+          </tr>
+        </table>
+        <input class="botons" type="submit" value="Iniciar Sesión">
+    </form>
   </body>
 </html>

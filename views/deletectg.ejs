@@ -1,0 +1,26 @@
+<%- include('header') -%>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Categoria</title>
+</head>
+<body>
+    <div>
+        <h1>¿Está seguro de eliminar esta categoria?</h1>
+        <form action="/deletectg/<%= categorias.id %>" method="get">
+            <h4><%= categorias.nombre %></h4>
+
+            <div class="col-sm-10">
+                <input type="submit" value="eliminar categoria" class="btn btn-default btn-danger">
+                <a class="btn btn-outline-dark cancel" href="/categorias">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+<%- include('footer') -%>
