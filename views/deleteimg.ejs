@@ -1,27 +1,101 @@
-<%- include('header') -%>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminar Imagen</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eliminar Imagen</title>
+
+  <style>
+    body {
+      background-color: #291d1d;
+      font-family: 'Times New Roman', Times, serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+
+    .container {
+      max-width: 400px;
+      padding: 20px;
+      background-color: rgb(182, 136, 122);
+      border: 2px solid rgb(41, 3, 3);
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    h3 {
+      margin-top: 0;
+      font-size: 24px;
+      color: orangered;
+      font-weight: bold;
+    }
+
+    img {
+      width: 100%;
+      margin: 5px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: orangered;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    a{
+      background-color: rgb(250, 213, 200);
+      padding: 10px 20px;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkorange;
+    }
+
+    h4 {
+      border: 2px solid orangered;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    footer {
+      width: 395px;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    address {
+      font-family: 'Times New Roman';
+    }
+  </style>
 </head>
+
 <body>
-    <div>
-        <h1>¿Está seguro de eliminar esta Imagen?</h1>
-        <form action="/deleteimg/<%= imagenes.id %>" method="get">
-            <img src="<%= imagenes.url %>">
-            <h4><%= imagenes.destacado %></h4>
+  <div class="container">
+    <h3><span style="background-color: rgb(119, 73, 73);">¿Está seguro de eliminar esta Imagen?</span></h3>
+    <form action="/deleteimg/<%= imagenes.id %>" method="get">
+      <label class="col-form-label col-sm-2" for="url">Imagen</label>
+      <img src="<%= imagenes.url %>">
+      <label class="col-form-label col-sm-2" for="destacado">Destacado</label>
+      <h4><%= imagenes.destacado %></h4>
 
-
-            <div class="col-sm-10">
-                <input type="submit" value="eliminar imagen" class="btn btn-default btn-danger">
-                <a class="btn btn-outline-dark cancel" href="/imagenes">Cancelar</a>
-            </div>
-        </form>
-    </div>
+      <button type="submit" class="btn btn-primary">Eliminar Imagen</button>
+      <a class="btn btn-outline-dark cancel" href="/imagenes">Cancelar</a>
+    </form>
+    <%- include('footer') -%>
+  </div>
 </body>
+
 </html>
 
-<%- include('footer') -%>

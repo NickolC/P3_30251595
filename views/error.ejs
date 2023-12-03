@@ -1,18 +1,74 @@
-<%- include('header') -%>
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Error</title>
+  <style>
+    body {
+      background-color: #291d1d;
+      font-family: 'Times New Roman', Times, serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 400px;
+      padding: 20px;
+      background-color: rgb(182, 136, 122);
+      border: 2px solid rgb(41, 3, 3);
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 36px;
+      font-weight: bold;
+      font-family: 'Times New Roman', Times, serif;
+      color: orangered;
+    }
+
+    a{
+      background-color: rgb(250, 213, 200);
+      padding: 10px 20px;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    p {
+      font-size: 18px;
+      font-family: 'Times New Roman', Times, serif;
+      margin-bottom: 30px;
+    }
+    footer {
+      width: 400px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    address {
+      font-family: 'Times New Roman';
+    }
+  </style>
 </head>
+
 <body>
+  <div class="container">
     <h1>Pagina Error</h1>
-    <p>Esta ocurriendo un Error, intentelo nuevamente</p>
+    <p>Esta ocurriendo un error, intentelo nuevamente</p>
+    <a href="/" class="btn btn-primary">Pagina Principal</a>
+    <%- include('footer') -%>
+  </div>
+
 </body>
+
 </html>
 
-
-<%- include('footer') -%>

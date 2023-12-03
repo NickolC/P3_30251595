@@ -1,40 +1,83 @@
-body{
-    width: 750px;
-    margin: 0 auto;
-}
-h1{
-    text-align: center;
-}
-.grande{
-    width: 775px;
-    height: 625px;
+h1 {
+  display: block;
+  color: orangered;
+  text-align: left;
+  padding: 14px 16px;
+  text-decoration: dotted;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: xx-large;
 }
 
-.icono{
-    width: 30px;
-    height: 20px;
-}
-.banner{
-    width: 725px;
-    height: 125px;
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  align-items: center;
+  height: 150vh;
+  /* Ajusta la altura según tus necesidades */
+  background-color: rgb(182, 136, 122);
+
 }
 
-.fijo{
-    width: 35px;
+.titulo {
+  margin-bottom: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  /* Ajusta el margen inferior según tus necesidades */
 }
 
-p{
-    text-align: justify;
+
+
+.play {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: medium;
+}
+
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+th {
+  background-color: rgb(88, 56, 45);
+}
+
+tr {
+  background-color: rgb(145, 81, 58);
+}
+
+
+/* estilos.css */
+
+.imagen-producto {
+  width: 100px;
+  /* Ajusta el ancho deseado */
+  height: 100px;
+  /* Ajusta la altura deseada */
+  object-fit: cover;
+  /* Ajusta cómo se ajusta la imagen dentro del contenedor */
 }
 
 footer{
-    width: 750px;
-    border: solid 1px;
-    border-color: blue;
+  width: 780px;
+  border: solid 1px;
+  border-color: rgb(70, 30, 16);
 }
 
 address{
-    padding-top: 15px;
-    font-family: 'Times New Roman';
-    text-align: center;
+  padding-top: 15px;
+  font-family: 'Times New Roman';
+  text-align: center;
 }

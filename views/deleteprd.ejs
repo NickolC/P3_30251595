@@ -1,30 +1,108 @@
-<%- include('header') -%>
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eliminar Producto</title>
-</head>
-<body>
-    <div>
-        <h1>¿Está seguro de eliminar este producto?</h1>
-        <form action="/deleteprd/<%= productos.id %>" method="get">
-            <h4><%= productos.nombre %></h4>
-            <h4><%= productos.codigo %></h4>
-            <h4><%= productos.precio %></h4>
-            <h4><%= productos.marca %></h4>
-            <h4><%= productos.tono %></h4>
-            <h4><%= productos.descripcion %></h4>
 
-            <div class="col-sm-10">
-                <input type="submit" value="eliminar producto" class="btn btn-default btn-danger">
-                <a class="btn btn-outline-dark cancel" href="/productos">Cancelar</a>
-            </div>
-        </form>
-    </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eliminar Producto</title>
+  <style>
+    body {
+      background-color: #291d1d;
+      font-family: 'Times New Roman', Times, serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 400px;
+      padding: 20px;
+      background-color: rgb(182, 136, 122);
+      border: 2px solid rgb(41, 3, 3);
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    h3 {
+      margin-top: 0;
+      font-size: 24px;
+      color: orangered;
+      font-weight: bold;
+    }
+
+    img {
+      max-width: 100%;
+      margin: 10px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: orangered;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    a{
+      background-color: rgb(250, 213, 200);
+      padding: 10px 20px;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: darkorange;
+    }
+
+    h4 {
+      border: 2px solid orangered;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 10px 0;
+    }
+    footer {
+      width: 395px;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    address {
+      font-family: 'Times New Roman';
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <h3><span style="background-color: rgb(119, 73, 73);">¿Está seguro de eliminar este producto?</span></h3>
+    <form action="/deleteprd/<%= productos.id %>" method="get">
+      <label class="col-form-label col-sm-2" for="nombre">Nombre</label>
+      <h4><%= productos.nombre %></h4>
+      <label class="col-form-label col-sm-2" for="codigo">Codigo</label>
+      <h4><%= productos.codigo %></h4>
+      <label class="col-form-label col-sm-2" for="precio">Precio</label>
+      <h4><%= productos.precio %></h4>
+      <label class="col-form-label col-sm-2" for="marca">Marca</label>
+      <h4><%= productos.marca %></h4>
+      <label class="col-form-label col-sm-2" for="tono">Tono</label>
+      <h4><%= productos.tono %></h4>
+      <label class="col-form-label col-sm-2" for="descripcion">Descripcion</label>
+      <h4><%= productos.descripcion %></h4>
+
+      <button type="submit" class="btn btn-primary">Eliminar Producto</button>
+      <a class="btn btn-outline-dark cancel" href="/productos">Cancelar</a>
+    </form>
+    <%- include('footer') -%>
+  </div>
 </body>
+
 </html>
 
-<%- include('footer') -%>
