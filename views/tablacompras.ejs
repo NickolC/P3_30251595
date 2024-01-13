@@ -27,8 +27,8 @@
       font-family: 'Times New Roman', Times, serif;
       color: white;
     }
-    
-    body{
+
+    body {
       background-color: #291d1d;
       font-family: 'Times New Roman', Times, serif;
     }
@@ -38,7 +38,7 @@
     }
 
     footer {
-      width: 1173px;
+      width: 1297px;
       border: solid 1px;
       border-color: rgb(70, 30, 16);
     }
@@ -58,13 +58,16 @@
       <div class="container-fluid">
         <h1>MakeUp Valenciano</h1>
 
-        <a class="navbar-brand" href="#"><strong>Pagina Principal</strong></a>
+        <a class="navbar-brand" href="#"><strong>Pagina de Facturas</strong></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link btn btn-outline-primary" href="/report">Home</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link  btn btn-outline-primary" aria-current="page" href="/categorias">Categorias</a>
             </li>
@@ -73,9 +76,6 @@
             </li>
             <li class="nav-item">
               <a class="nav-link btn btn-outline-primary" href="/imagenes">Imagenes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link btn btn-outline-primary" href="/tablacompras">Facturas</a>
             </li>
             <li class="nav-item">
               <a class="nav-link btn btn-outline-primary" href="/tablaclientes">Clientes</a>
@@ -91,12 +91,10 @@
     </nav>
   </header>
 
-
   <div class="container ">
     <div class="titulo">
-      <h1>MakeUp Valenciano</h1>
+      <h1>Pagina Facturas</h1>
     </div>
-
     <div>
       <table border="2">
         <!-- <caption><h1>Reporte General</h1></caption> -->
@@ -105,61 +103,69 @@
             <p>N°</p>
           </th>
           <th>
-            <p>Codigo</p>
+            <p>Cantidad</p>
           </th>
           <th>
-            <p>Nombre</p>
+            <p>Total Pagado</p>
           </th>
           <th>
-            <p>Precio</p>
+            <p>Fecha</p>
           </th>
           <th>
-            <p>Marca</p>
+            <p>Cliente Ip</p>
           </th>
           <th>
-            <p>Tono</p>
+            <p>N° de Transacción</p>
           </th>
           <th>
             <p>Descripcion</p>
           </th>
           <th>
-            <p>Categoria</p>
+            <p>Referencia</p>
           </th>
           <th>
-            <p>Imagen</p>
+            <p>Nomenclatura</p>
           </th>
           <th>
-            <p>Destacado</p>
+            <p>Email</p>
+          </th>
+          <th>
+            <p>Nombre</p>
           </th>
         </tr>
         <tr>
-          <% if (datos) { %>
-          <% for (let i = 0; i < datos.length; i++){  %>
+          <% if (facturas) { %>
+          <% for (let i=0; i < facturas.length; i++){ %>
+          <% if (facturas) { %>
         <tr>
           <td><%= (i + 1) %></td>
-          <td><%= datos[i].codigo %></td>
-          <td><%= datos[i].productoNombre %></td>
-          <td><%= datos[i].precio %></td>
-          <td><%= datos[i].marca %></td>
-          <td><%= datos[i].tono %></td>
-          <td><%= datos[i].descripcion %></td>
-          <td><%= datos[i].categoriaNombre %></td>
-          <td><img class="imagen-producto" src="<%= datos[i].url %>"></td>
-          <td><%= datos[i].destacado %></td>
+          <td><%= facturas[i].cantidad %></td>
+          <td><%= facturas[i].total_pagado %></td>
+          <td><%= facturas[i].fecha %></td>
+          <td><%= facturas[i].ip_cliente %></td>
+          <td><%= facturas[i].transaccion_id %></td>
+          <td><%= facturas[i].descripcion %></td>
+          <td><%= facturas[i].referencia %></td>
+          <td><%= facturas[i].nomenclatura %></td>
+          <td><%= facturas[i].email %></td>
+          <td><%= facturas[i].nombre %></td>
         </tr>
+        <% } %>
         <% } %>
         <% } else { %>
         <tr>
           <th>
-            <p>No hay productos en el sistema</p>
+            <p>No hay compras en el sistema</p>
           </th>
         </tr>
-        <% }   %>
+        <% } %>
         </tr>
       </table>
     </div>
     <%- include('footer') -%>
   </div>
+
+
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 </body>

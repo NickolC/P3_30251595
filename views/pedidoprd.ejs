@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Producto</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
+    
+        * {
+          box-sizing: border-box;
+        }
+    
+        body {
+          background-color: #291d1d;
+          font-family: 'Times New Roman', Times, serif;
+          display: flex;
+          height: 100vh;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          margin: 0;
+        }
+    
+        .container {
+            background-color: rgb(182, 136, 122);
+          border-radius: 10px;
+          box-shadow: 0 2px 20px 0px rgba(0, 0, 0, 0.18);
+          overflow: hidden visible;
+          width: 520px;
+          height: 970px;
+          max-width: 100%;
+          text-align: center;
+        }
+    
+        .header {
+          border-bottom: 1px solid #945e5e;
+          background-color: rgb(88, 56, 45);
+          padding: 20px 40px;
+        }
+    
+        .header h2 {
+          margin: 0;
+          color: rgb(248, 105, 53);
+        }
+    
+        .form {
+          padding: 30px 40px;
+          font-weight: 500;
+          text-align: center;
+          color: #000000;
+        }
+    
+        .form-control {
+          padding-bottom: 10px;
+          position: relative;
+        }
+    
+        .form-control label {
+          display: inline-block;
+          margin-bottom: 5px;
+        }
+    
+        .form-control input {
+          border: 2px solid #f0f0f0;
+          border-radius: 4px;
+          display: block;
+          font-family: inherit;
+          font-size: 14px;
+          padding: 10px;
+          width: 100%;
+        }
+    
+        .form-control input:focus {
+          outline: 0;
+          border-color: #5a5959;
+        }
+    
+        .form-control.success input {
+          border-color: #2ecc71;
+        }
+    
+        .form-control.error input {
+          border-color: #e74c3c;
+        }
+    
+        .form-control i {
+          visibility: hidden;
+          position: absolute;
+          top: 40px;
+          right: 10px;
+        }
+    
+        .form-control.success i.fa-check-circle {
+          color: #2ecc71;
+          visibility: visible;
+        }
+    
+        .form-control.error i.fa-exclamation-circle {
+          color: #e74c3c;
+          visibility: visible;
+        }
+    
+        .form-control small {
+          color: #e74c3c;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          visibility: hidden;
+        }
+    
+        .form-control.error small {
+          visibility: visible;
+        }
+    
+        .form button {
+          background-color: rgb(255, 102, 46);
+          border: 2px solid rgb(70, 30, 16);
+          border-radius: 4px;
+          color: #fff;
+          display: block;
+          font-family: inherit;
+          font-size: 16px;
+          padding: 10px;
+          width: 100%;
+          cursor: pointer;
+          transition: 0.6s;
+        }
+    
+        .form a{
+          background-color: rgb(250, 213, 200);
+          border: 2px solid rgb(43, 37, 35);
+          border-radius: 4px;
+          color: black;
+          display: block;
+          text-align: center;
+          font-family: inherit;
+          font-size: 16px;
+          padding: 10px;
+          margin-top: 20px;
+          width: 75%;
+          cursor: pointer;
+          margin-top: 10px;
+          transition: 0.6s;
+        }
+    
+        .form a:hover{
+          transform: scale(0.95);
+          opacity: .8;
+        }
+    
+        .form button:hover {
+          transform: scale(0.95);
+          opacity: .8;
+        }
+    
+        input::placeholder {
+          color: #6f7fa065;
+        }
+    
+    
+    
+    
+        form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+    
+        select {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 10px;
+          color: orangered;
+          border: 1px solid orangered;
+          outline: none;
+        }
+    
+        button {
+          background-color: orangered;
+          border: 2px solid rgb(70, 30, 16);
+          border-radius: 4px;
+          color: #fff;
+          display: block;
+          font-family: inherit;
+          font-size: 16px;
+          padding: 10px;
+          width: 75%;
+          cursor: pointer;
+          transition: 0.6s;
+        }
+
+        a {
+          background-color: rgb(250, 213, 200);
+          border: 2px solid rgb(43, 37, 35);
+          border-radius: 4px;
+          color: black;
+          display: block;
+          text-align: center;
+          font-family: inherit;
+          font-size: 16px;
+          padding: 10px;
+          margin-top: 10px;
+          width: 50%;
+          cursor: pointer;
+          transition: 0.6s;
+        }
+
+        a:hover {
+          transform: scale(0.95);
+          opacity: .8;
+        }
+    
+        button:hover {
+          background-color: darkorange;
+          transform: scale(0.95);
+          opacity: .8;
+        }
+    
+        footer {
+            margin-top: 10px;
+          width: 525px;
+          text-align: center;
+        }
+    
+        address {
+          font-family: 'Times New Roman';
+        }
+        .imagen-producto {
+            width: 100px; /* Ajusta el ancho deseado */
+            height: 100px; /* Ajusta la altura deseada */
+            object-fit: cover; /* Ajusta cómo se ajusta la imagen dentro del contenedor */
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="container" >
+        <div class="header">
+            <h2>Comprando producto</h2>
+          </div>
+
+        <img src="<%= datos.url %>" class="imagen-producto">
+
+        <form action="/payments" method="post">
+
+            <div class="form-control">
+                <label for="descripcion">Tipo de transacción</label>
+                <input type="text" name="descripcion" id="descripcion" value="Compra de: <%= datos.productoNombre %>" readonly>
+                <input type="text" name="producto_id" id="producto_id" value="<%= datos.id %>" readonly>
+            </div>
+
+            <div class="form-control">
+                <label for="nombre">Nombre del comprador</label>
+                <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre completo" required>
+            </div>
+
+            <div class="form-control">
+                <label for="numero_tarjeta">Número de Tarjeta de Credito</label>
+                <input type="password" name="numero_tarjeta" id="numero_tarjeta" placeholder="Ingrese su numeor de tarjeta de credito" maxlength="16" minlength="14" required>
+            </div>
+
+            <div class="form-control">
+                <label for="cvv">Código de Seguridad</label>
+                <input type="password" name="cvv" id="cvv" placeholder="Ingrese el codigo de seguridad de la tarjeta de credito" maxlength="3" required><br>
+            </div>
+
+            <div class="form-control" style="margin-top: -20px;">
+              <label for="referencia">Haga una referencia</label>
+              <input type="text" name="referencia" id="referencia" value="Marca: <%= datos.marca %>" readonly>
+          </div>
+            
+        <div class="form-group row">
+          <label class="col-form-label col-sm-2" for="mes_ven">Mes de Vencimiento de la tarjeta</label>
+          <select name="mes_ven" id="mes_ven">
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+        </select>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-form-label col-sm-2" for="year_ven">Año de Vencimiento de la tarjeta</label>
+        <select name="year_ven" id="year_ven">
+            <% for (let i = 2024; i < 2028; i++){ %>
+                <option value="<%= i %>"><%= i %></option>
+           <% } %>
+        </select>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label col-sm-2" for="moneda_id">Moneda de pago</label>
+        <select name="moneda_id" id="moneda_id">
+            <option value="1">USD (Dólar Americano)</option>
+            <option value="2">EUR (Euro)</option>
+            <option value="3">VES (Bolívares)</option>
+        </select>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-form-label col-sm-2" for="cantidad">Cantidad</label>
+        <select name="cantidad" id="cantidad">
+            <% for (let i = 1; i < 21; i++){ %>
+                <option value="<%= i %>"><%= i %></option>
+           <% } %>
+        </select>
+    </div>
+
+    <div class="form-control">
+        <label for="precio">Precio del producto</label>
+        <input type="number" name="precio" id="precio" value="<%= datos.precio %>" readonly>
+    </div>
+            
+            
+            
+    <button type="submit" class="btn btn-primary">Comprar</button>
+    <a class="btn btn-secondary" href="/clientes">Cancelar</a>
+    </form>
+    <%- include('footer') -%>
+    </div>
+</body>
+</html>

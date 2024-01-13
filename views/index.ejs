@@ -1,244 +1,115 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MakeUp Valenciano</title>
-
-  <link rel="stylesheet" href="/stylesheets/admin.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
-
-  <style>
-    th {
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      font-weight: bold;
-      display: flexbox;
-      justify-content: center;
-      color: black;
-    }
-
-    th,
-    td {
-      padding: 10px;
-      text-align: left;
-      font-family: 'Times New Roman', Times, serif;
-      color: white;
-    }
-
-    body {
-      background-color: #291d1d;
-      font-family: 'Times New Roman', Times, serif;
-    }
-
-    form {
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      color: white;
-    }
-
-    footer {
-      width: 845px;
-      border: solid 1px;
-      border-color: rgb(70, 30, 16);
-      margin-top: 10px;
-    }
-
-    address {
-      padding-top: 15px;
-      font-family: 'Times New Roman';
-      text-align: center;
-    }
-  </style>
-</head>
-
-<body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary" data-bs-theme="dark">
-      <div class="container-fluid">
-        <h1>MakeUp Valenciano</h1>
-        <a class="navbar-brand" href="#"><strong>Pagina Principal</strong></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav nav justify-content-center">
-            <li class="navbar bg-body-tertiary">
-              <form class="d-flex input-group w-auto" action="/search" method="post">
-                <input class="form-control me-2" type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre del producto">
-                <button type="submit" class="btn btn-secondary me-2">Buscar</button>
-              </form>
-            </li>
-
-            <li class="navbar bg-body-tertiary">
-              <form class="d-flex input-group w-auto" action="/searchdescrp" method="post">
-                <input class="form-control me-2" type="text" name="descripcion" id="descripcion" placeholder="Ingrese una descripcion del producto">
-                <button type="submit" class="btn btn-secondary me-2">Buscar</button>
-              </form>
-            </li>
-          </ul>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav nav justify-content-center">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Filtrado
-              </a>
-              <ul class="dropdown-menu">
-                <li class="nav-item">
-                  <form action="/filtroctg" method="post">
-                    <select name="categoria" id="categoria">
-                      <option value="">--Categorias--</option>
-                      <% if (datos) { %>
-                        <% for (let i = 0; i < datos.length; i++){  %>
-                            <% if (datos) { %>
-                                <option value="<%= datos[i].categoriaNombre %>" name="categoria" id="categoria"><%= datos[i].categoriaNombre %></option>
-                            <% } %>
-                        <% } %>
-                    <% } else { %>
-                        <option value="">No existe la categoria en el sistema</option>
-                    <% }   %>
-                    </select>
-                    <button type="submit" class="btn btn-secondary me-2">Filtrar categorias</button>
-                  </form>
-
-                  <form action="/filtromarca" method="post">
-                    <select name="marca" id="marca">
-                      <option value="">--Marcas--</option>
-                      <% if (datos) { %>
-                        <% for (let i = 0; i < datos.length; i++){  %>
-                            <% if (datos) { %>
-                                <option value="<%= datos[i].marca %>"><%= datos[i].marca %></option>
-                            <% } %>
-                        <% } %>
-                    <% } else { %>
-                        <option value="">No existe la marca en el sistema</option>
-                    <% }   %>
-                    </select>
-                    <button type="submit" class="btn btn-secondary me-2">Filtrar marcas</button>
-                  </form>
-
-                  <form action="/filtrotn" method="post">
-                    <select name="tono" id="tono">
-                      <option value="">--Tonos--</option>
-                      <% if (datos) { %>
-                        <% for (let i = 0; i < datos.length; i++){  %>
-                            <% if (datos) { %>
-                                <option value="<%= datos[i].tono %>"><%= datos[i].tono %></option>
-                            <% } %>
-                        <% } %>
-                    <% } else { %>
-                        <option value="0">No existe el tono en el sistema</option>
-                    <% }   %>
-                    </select>
-                    <button type="submit" class="btn btn-secondary me-2">Filtrar tonos</button>
-                  
-                    <li class="nav-item">
-                      <button data-mdb-ripple-init type="button" class="btn btn-secondary me-3">
-                        <a class="nav-link" href="/">Restablecer</a>
-                      </button>
-                    </li>
-                  
-                  </form>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-
-        
-
-        <div class="d-flex align-items-center">
-          <button data-mdb-ripple-init type="button" class="btn btn-primary me-3">
-            <a class="nav-link btn btn-outline-primary" href="/admin">Iniciar Seccion</a>
-          </button>
-        </div>
-      </div>
-    </nav>
-  </header>
-
-
-  <div class="container ">
-    <div class="titulo">
-      <h1>MakeUp Valenciano</h1>
-    </div>
-
-    <div class="card-header">
-      <div class="btn-group" role="group" aria-label="Vista de productos">
-        <input style="margin-bottom: 10px;" type="radio" class="btn-check" name="vistaProductos" id="btnCuadricula" autocomplete="off" checked>
-        <label style="margin-bottom: 10px;" class="btn btn-outline-primary" for="btnCuadricula">Lista</label>
-        <input style="margin-bottom: 10px;" type="radio" class="btn-check" name="vistaProductos" id="btnLista" autocomplete="off">
-        <label style="margin-bottom: 10px;" class="btn btn-outline-primary" for="btnLista">Cuadrícula</label>
-      </div>
-    </div>
-    <div class="card-body  justify-content-center ">
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <% for(const producto of datos) { %>
-        <% if (producto.producto_id == producto.id && producto.destacado == "Si") { %>
-        <div class="col custom-col">
-          <a href="/info/<%= producto.id%>">
-            <div class="card bg-light mb-3 text-center h-100 shadow-border ">
-              <div class="card-header">
-                <h4 style="margin-top: 10px; font-weight: bold;"><%= producto.productoNombre %></h4>
-              </div>
-              <div class="card-body">
-                <img src="<%= producto.url %>" class="card-img-top shadow-border" style="max-height: 200px; max-width: 200px;">
-              </div>
-              <div class="card-footer">
-                <h4 style="font-weight: bold;"><%= producto.precio %> $</h4>
-              </div>
-            </div>
-          </a>
-        </div>
-        <% } %>
-        <% } %>
-      </div>
-      <%- include('footer') -%>
-    </div>
-
-  </div>
-
-</div>
-  </div>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const btnCuadricula = document.getElementById("btnCuadricula");
-      const btnLista = document.getElementById("btnLista");
-      const productosContainer = document.querySelector(".row.row-cols-1.row-cols-md-3.g-4");
-
-      // Verificar si hay un estado guardado en el almacenamiento local
-      const estadoGuardado = localStorage.getItem("estadoVista");
-      if (estadoGuardado === "cuadricula") {
-        productosContainer.classList.remove("row-cols-md-1");
-        productosContainer.classList.add("row-cols-md-3");
-      } else if (estadoGuardado === "lista") {
-        productosContainer.classList.remove("row-cols-md-3");
-        productosContainer.classList.add("row-cols-md-1");
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MakeUp Valenciano</title>
+    <style>
+      body {
+        background-color: #291d1d;
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+  
+      .container {
+        max-width: 100%;
+        width: 520px;
+      height: 380px;
+      border-radius: 10px;
+      box-shadow: 0 2px 20px 0px rgba(0, 0, 0, 0.18);
+        background-color: rgb(182, 136, 122);
+        overflow: hidden visible;
+        border: 2px solid rgb(41, 3, 3);
+        border-radius: 5px;
+        text-align: center;
       }
 
-      btnCuadricula.addEventListener("click", function() {
-        productosContainer.classList.remove("row-cols-md-1");
-        productosContainer.classList.add("row-cols-md-3");
+      .header {
+      border-bottom: 1px solid #945e5e;
+      background-color: rgb(88, 56, 45);
+      padding: 20px 40px;
+    }
 
-        // Guardar el estado seleccionado en el almacenamiento local
-        localStorage.setItem("estadoVista", "cuadricula");
-      });
+    .header h2 {
+      margin: 0;
+      color: rgb(248, 105, 53);
+    }
+  
+      h3 {
+        margin-top: 50px;
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: whitesmoke;
+        font-weight: bold;
+      }
+  
+      img {
+        max-width: 100%;
+        margin: 10px 0;
+      }
+  
+      button {
+        padding: 10px 20px;
+        background-color: orangered;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        cursor: pointer;
+      }
+  
+      a{
+        background-color: rgb(250, 213, 200);
+        padding: 10px 20px;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        cursor: pointer;
+      }
+  
+      button:hover {
+        background-color: darkorange;
+      }
+  
+      h4 {
+        border: 2px solid orangered;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px 0;
+      }
+      footer {
+        width: 520px;
+        margin-top: 40px;
+        text-align: center;
+      }
+  
+      address {
+        font-family: 'Times New Roman';
+      }
+    </style>
+  
+  </head>
+  
+  <body>
+    <div class="container">
 
-      btnLista.addEventListener("click", function() {
-        productosContainer.classList.remove("row-cols-md-3");
-        productosContainer.classList.add("row-cols-md-1");
+        <div class="header">
+            <h2>Pagina Principal</h2>
+          </div>
 
-        // Guardar el estado seleccionado en el almacenamiento local
-        localStorage.setItem("estadoVista", "lista");
-      });
-    });
-  </script>
-</body>
+      <h3><span style="background-color: rgb(119, 73, 73);">Pagina para Clientes</span></h3>
+      <form action="/" method="get">
+        </h4><a class="btn btn-secondary" href="/clientes">Clientes</a>
 
-</html>
+        <h3><span style="background-color: rgb(119, 73, 73);">Pagina para Administradores</span></h3>
+      <form action="/" method="get">
+        </h4><a class="btn btn-secondary" href="/admin">Admin</a>
+      </form>
+      <%- include('footer') -%>
+    </div>
+  </body>
+  
+  </html>

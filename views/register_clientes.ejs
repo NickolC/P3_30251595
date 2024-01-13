@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
+    <head>
+
+    <title>Registro Clientes</title>
+    <Style>
+        @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
+    
+        * {
+          box-sizing: border-box;
+        }
+    
+        body {
+          background-color: #291d1d;
+          font-family: 'Times New Roman', Times, serif;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          margin: 0;
+        }
+    
+        .container {
+          background-color: rgb(182, 136, 122);
+          border-radius: 10px;
+          box-shadow: 0 2px 20px 0px rgba(0, 0, 0, 0.18);
+          overflow: hidden visible;
+          width: 520px;
+          height: 840px;
+          max-width: 100%;
+        }
+    
+        .header {
+          border-bottom: 1px solid #945e5e;
+          background-color: rgb(88, 56, 45);
+          padding: 20px 40px;
+        }
+    
+        .header h2 {
+          margin: 0;
+          color: rgb(248, 105, 53);
+        }
+    
+        .form {
+          padding: 30px 40px;
+          font-weight: 500;
+          text-align: center;
+          margin-top: 5px;
+          color: #000000;
+        }
+    
+        .form-control {
+          margin-bottom: 10px;
+          padding-bottom: 20px;
+          position: relative;
+        }
+    
+        .form-control label {
+          display: inline-block;
+          margin-bottom: 5px;
+        }
+    
+        .form-control input {
+          border: 2px solid #f0f0f0;
+          border-radius: 4px;
+          display: block;
+          font-family: inherit;
+          font-size: 14px;
+          padding: 10px;
+          width: 100%;
+        }
+    
+        .form-control input:focus {
+          outline: 0;
+          border-color: #5a5959;
+        }
+    
+        .form-control.success input {
+          border-color: #2ecc71;
+        }
+    
+        .form-control.error input {
+          border-color: #e74c3c;
+        }
+    
+        .form-control i {
+          visibility: hidden;
+          position: absolute;
+          top: 40px;
+          right: 10px;
+        }
+    
+        .form-control.success i.fa-check-circle {
+          color: #2ecc71;
+          visibility: visible;
+        }
+    
+        .form-control.error i.fa-exclamation-circle {
+          color: #e74c3c;
+          visibility: visible;
+        }
+    
+        .form-control small {
+          color: #e74c3c;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          visibility: hidden;
+        }
+    
+        .form-control.error small {
+          visibility: visible;
+        }
+    
+        .form button {
+          background-color: rgb(255, 102, 46);
+          border: 2px solid rgb(70, 30, 16);
+          border-radius: 4px;
+          color: #fff;
+          display: block;
+          font-family: inherit;
+          font-size: 16px;
+          padding: 10px;
+          width: 100%;
+          cursor: pointer;
+          transition: 0.6s;
+        }
+    
+        .form a{
+          background-color: rgb(250, 213, 200);
+          border: 2px solid rgb(43, 37, 35);
+          border-radius: 4px;
+          color: black;
+          display: block;
+          text-align: center;
+          font-family: inherit;
+          font-size: 16px;
+          padding: 10px;
+          margin-top: 20px;
+          width: 75%;
+          cursor: pointer;
+          transition: 0.6s;
+        }
+    
+        .form a:hover{
+          transform: scale(0.95);
+          opacity: .8;
+        }
+    
+        .form button:hover {
+          transform: scale(0.95);
+          opacity: .8;
+        }
+    
+        input::placeholder {
+          color: #6f7fa065;
+        }
+    
+    
+        label {
+          text-align: center;
+          font-family: inherit;
+        }
+    
+        form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+    
+        select {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 10px;
+          color: orangered;
+          border: 1px solid orangered;
+          outline: none;
+        }
+    
+        button {
+          background-color: orangered;
+          border: 2px solid rgb(70, 30, 16);
+          border-radius: 4px;
+          color: #fff;
+          display: block;
+          font-family: inherit;
+          font-size: 16px;
+          padding: 10px;
+          width: 75%;
+          cursor: pointer;
+          transition: 0.6s;
+        }
+
+        a {
+          background-color: rgb(250, 213, 200);
+          border: 2px solid rgb(43, 37, 35);
+          border-radius: 4px;
+          color: black;
+          display: block;
+          text-align: center;
+          font-family: inherit;
+          font-size: 16px;
+          padding: 10px;
+          margin-top: 20px;
+          width: 50%;
+          cursor: pointer;
+          transition: 0.6s;
+        }
+
+        a:hover {
+          transform: scale(0.95);
+          opacity: .8;
+        }
+    
+        button:hover {
+          background-color: darkorange;
+          transform: scale(0.95);
+          opacity: .8;
+        }
+    
+        footer {
+          width: 525px;
+          text-align: center;
+          margin-top: 20px;
+        }
+    
+        address {
+          font-family: 'Times New Roman';
+        }
+      </Style>
+</head>
+
+<body>
+
+    <div class="container">
+      <div class="header">
+        <h2>Registro de cuenta nueva</h2>
+      </div>
+  
+  
+      <form action="/register" method="post">
+
+        <div class="form-control">
+            <label class="col-form-label col-sm-2" for="email" style="margin-top: 30px;">Ingrese el correo</label>
+            <input type="email" name="email" id="email" maxlength="30" minlength="8" placeholder="Ingrese su correo electronico" required>
+        </div>
+
+        <div class="form-control">
+            <label class="col-form-label col-sm-2" for="password">Ingrese su contraseña</label>
+            <input type="password" name="password1" id="password1" maxlength="16" minlength="8" placeholder="Ingrese su contraseña" required>
+        </div>
+
+        <div class="form-control">
+            <label class="col-form-label col-sm-2" for="password2">Confirme su contraseña</label>
+            <input type="password" name="password2" id="password2" maxlength="16" minlength="8" placeholder="Confirme su contraseña" required>
+        </div>
+
+        <div class="form-control">
+            <label class="col-form-label col-sm-2" for="preg_seg">Ingrese su pregunta de seguridad</label>
+            <input type="text" name="preg_seg" id="preg_seg" maxlength="160" minlength="6" placeholder="Ingrese su pregunta de seguridad" required>
+        </div>
+
+        <div class="form-control">
+            <label class="col-form-label col-sm-2" for="resp_seg">Ingrese su respuseta de seguiridad</label>
+            <input type="text" name="resp_seg" id="resp_seg" maxlength="160" minlength="4" placeholder="Ingrese su respuesta de seguridad" required>
+        </div>
+
+        <div class="form-control">
+          <div class="g-recaptcha" data-sitekey="6Len6E0pAAAAAGYBixt8rD0HG5IXC9togVbY5UhD" data-action="LOGIN"></div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Registrate</button>
+        <a class="btn btn-secondary" href="/loginclientes">Cancelar</a>
+      </form>
+      <%- include('footer') -%>
+    </div>
+  </body>
+</html>

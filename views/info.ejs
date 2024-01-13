@@ -97,11 +97,6 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary" data-bs-theme="dark">
       <div class="container-fluid">
         <h1>MakeUp Valenciano</h1>
-        <div class="d-flex align-items-center">
-          <button data-mdb-ripple-init type="button" class="btn btn-primary me-3">
-            <a class="nav-link btn btn-outline-primary" href="/admin">Iniciar Seccion</a>
-          </button>
-        </div>
       </div>
     </nav>
   </header>
@@ -109,16 +104,15 @@
   <body>
     <div class="container">
       <div class="row product-container">
-        <% for(const producto of datos) { %>
-            <% if (producto.producto_id == producto.id && producto.destacado == "Si") { %>
+
         <div class="col-md-6">
-          <img src="<%= producto.url %>" alt="Product Image" class="product-image shadow-border" style="max-width: 400px;">
+          <img src="<%= datos.url %>" alt="Product Image" class="product-image shadow-border" style="max-width: 400px;">
         </div>
         <div class="col-md-6">
-          <h2 class="product-title"><%= producto.productoNombre %> </h2>
-          <p class="product-description"> <%= producto.categoriaNombre %> </p>
-          <p class="product-price"><%= producto.precio %>$ </p>
-          <p><%= producto.codigo %></p>
+          <h2 class="product-title"><%= datos.productoNombre %> </h2>
+          <p class="product-description"> <%= datos.categoriaNombre %> </p>
+          <p class="product-price"><%= datos.precio %>$ </p>
+          <p><%= datos.codigo %></p>
           <div class="accordion" id="accordionExample">
             <div class="accordion-item">
               <h2 class="accordion-header" id="headingOne">
@@ -128,7 +122,7 @@
               </h2>
               <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  <%= producto.descripcion %>
+                  <%= datos.descripcion %>
                 </div>
               </div>
             </div>
@@ -140,7 +134,7 @@
               </h2>
               <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                  <%= producto.marca %>
+                  <%= datos.marca %>
                 </div>
               </div>
             </div>
@@ -152,19 +146,18 @@
                 </h2>
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                   <div class="accordion-body">
-                    <%= producto.tono %>
+                    <%= datos.tono %>
                   </div>
                 </div>
             </div>
           </div>
           <div class="button-container">
-            <button style="margin-top: 10px; margin-bottom: 10px;" type="button" class="btn btn-primary">Añadir al carrito</button>
+            <p class="texto"><a href="/pedidoprd/<%= datos.id%>" style="margin-top: 10px;" class="btn btn-success">Comprar</a></p>
           </div>
         </div>
-        <% } %>
-        <% } %>
+
         <div class="button-container">
-            <a type="button" class="btn btn-secondary" href="/">Volver atras</a>
+            <a type="button" class="btn btn-secondary" href="/clientes">Volver atras</a>
         </div>
       </div>
       <%- include('footer') -%>
