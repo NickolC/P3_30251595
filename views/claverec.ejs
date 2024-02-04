@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fallo de Sesion</title>
+    <title>Cambio de Contraseña</title>
    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -36,41 +36,155 @@
       color: orangered;
     }
 
-    a{
-      background-color: rgb(250, 213, 200);
-      padding: 10px 20px;
-      color: black;
-      border: none;
-      border-radius: 5px;
-      outline: none;
-      cursor: pointer;
+    h2{
+      color: white;
     }
 
-    p {
-      font-size: 18px;
-      font-family: 'Times New Roman', Times, serif;
-      margin-bottom: 30px;
-    }
-    footer {
-      width: 360px;
-      margin-top: 20px;
-      text-align: center;
-    }
+    .form button {
+          background-color: rgb(255, 102, 46);
+          border: 2px solid rgb(70, 30, 16);
+          border-radius: 4px;
+          color: #fff;
+          display: block;
+          font-family: inherit;
+          font-size: 16px;
+          padding: 10px;
+          width: 100%;
+          cursor: pointer;
+          transition: 0.6s;
+        }
+    
+        .form a{
+          background-color: rgb(250, 213, 200);
+          border: 2px solid rgb(43, 37, 35);
+          border-radius: 4px;
+          color: black;
+          display: block;
+          text-align: center;
+          font-family: inherit;
+          font-size: 16px;
+          padding: 10px;
+          margin-top: 20px;
+          width: 75%;
+          cursor: pointer;
+          transition: 0.6s;
+        }
+    
+        .form a:hover{
+          transform: scale(0.95);
+          opacity: .8;
+        }
+    
+        .form button:hover {
+          transform: scale(0.95);
+          opacity: .8;
+        }
+    
+        input::placeholder {
+          color: #6f7fa065;
+        }
+    
+    
+        label {
+          text-align: center;
+          font-family: inherit;
+        }
+    
+        form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+    
+        select {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 10px;
+          color: orangered;
+          border: 1px solid orangered;
+          outline: none;
+        }
+    
+        button {
+          background-color: orangered;
+          border: 2px solid rgb(70, 30, 16);
+          border-radius: 4px;
+          color: #fff;
+          display: block;
+          font-family: inherit;
+          font-size: 16px;
+          padding: 10px;
+          width: 75%;
+          cursor: pointer;
+          transition: 0.6s;
+        }
 
-    address {
-      font-family: 'Times New Roman';
-    }
+        a {
+          background-color: rgb(250, 213, 200);
+          border: 2px solid rgb(43, 37, 35);
+          border-radius: 4px;
+          color: black;
+          display: block;
+          text-align: center;
+          font-family: inherit;
+          font-size: 16px;
+          padding: 10px;
+          margin-top: 20px;
+          width: 50%;
+          cursor: pointer;
+          transition: 0.6s;
+        }
+
+        a:hover {
+          transform: scale(0.95);
+          opacity: .8;
+        }
+    
+        button:hover {
+          background-color: darkorange;
+          transform: scale(0.95);
+          opacity: .8;
+        }
+    
+        footer {
+          width: 300px;
+          text-align: center;
+          margin-top: 20px;
+        }
+    
+        address {
+          font-family: 'Times New Roman';
+        }
 
     </style>
 </head>
 <body>
+  <div class="adjust">
     <div class="container">
-    <h1>Su Contraseña es:</h1>
-    <p><%= datos.password %></p>
 
-    <a type="button" class="btn btn-dark" href="/loginclientes">Volver a intentar</a>
-    <%- include('footer') -%>
+        <div class="header">
+            <h2>Restablecer Contraseña</h2>
+        </div>
+        <hr>
+        <form action="/updateclave/<%= datos[0].id %>" method="post">
+          
+            <h4 for="password">Ingrese su nueva contraseña</h4>
+            <input type="password" name="password1" id="password1" maxlength="16" minlength="8"
+                placeholder="Ingrese su contraseña" required>
+            <hr>
+            
+            
+            <h4 for="password2">Confirme su nueva contraseña</h4>
+            <input type="password" name="password2" id="password2" maxlength="16" minlength="8"
+                placeholder="Confirme su contraseña" required>
+            <hr>
+          
+            <button type="submit" class="btn btn-primary">Restablecer Contraseña</button>
+            <a class="btn btn-secondary" href="/loginclientes">Salir</a>
+        </form>
+        <%- include('footer') -%>
     </div>
+</div>
 
 
 

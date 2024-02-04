@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos Comprados</title>
+
+  <link rel="stylesheet" href="/stylesheets/admin.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/hf.css">
+
+  <!-- 
+    - favicon
+  -->
+  <link rel="shortcut icon" href="https://i.pinimg.com/236x/a6/17/7e/a6177eb9992ea3a348dbb5c022160ffa.jpg" type="">
+
+  <!-- 
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;700&family=Saira+Stencil+One&display=swap" rel="stylesheet">
+
+
+  <style>
+    .titulo h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      align-items: center;
+      height: 150vh;
+      /* Ajusta la altura según tus necesidades */
+      background-color: rgb(182, 136, 122);
+
+    }
+
+    th {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      font-weight: bold;
+      display: flexbox;
+      justify-content: center;
+      color: black;
+    }
+
+    table {
+      width: 58%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      font-family: 'Times New Roman', Times, serif;
+      color: white;
+    }
+
+    th {
+      background-color: rgb(88, 56, 45);
+    }
+
+    tr {
+      background-color: rgb(145, 81, 58);
+    }
+
+    body {
+      background-color: #291d1d;
+      font-family: 'Times New Roman', Times, serif;
+    }
+
+    h1 {
+      color: white;
+    }
+
+    footer {
+      width: 900px;
+      border: solid 1px;
+      border-color: rgb(70, 30, 16);
+    }
+
+    address {
+      padding-top: 15px;
+      font-family: 'Times New Roman';
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary" data-bs-theme="dark">
+        <div class="container-fluid">
+          <h1>MakeUp Valenciano</h1>
+          <a class="navbar-brand" href="#"><strong>Pagina de lo Comprado</strong></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="d-flex align-items-center">
+            <button data-mdb-ripple-init type="button" class="btn btn-primary me-3">
+              <a class="nav-link btn btn-outline-primary" href="/clientes">Atras</a>
+            </button>
+          </div>
+        </div>
+      </nav>
+  
+    </header>
+
+  <main class="separe">
+    <article class="container1">
+      <div class="container">
+        <div class="table-responsive">
+          <div class="titulo">
+            <h1>Productos Comprados</h1>
+          </div>
+          <table border="2" class="table table-hover table-dark table-striped">
+            <!-- <caption><h1>Reporte General</h1></caption> -->
+            <tr>
+              <th>
+                <p>N°</p>
+              </th>
+              <th>
+                <p>Imagen</p>
+              </th>
+              <th>
+                <p>Producto</p>
+              </th>
+              <th>
+                <p>Cantidad</p>
+              </th>
+              <th>
+                <p>Total Pagado</p>
+              </th>
+              <th>
+                <p>Moneda</p>
+              </th>
+              <th>
+                <p>Fecha</p>
+              </th>
+              <th>
+                <p>Accion</p>
+              </th>
+            </tr>
+            <tr>
+              <% if (datos) { %>
+              <% for (let i=0; i < datos.length; i++){ %>
+            <tr>
+              <td>
+                <%= (i + 1) %>
+              </td>
+              <td>
+                <img class="imagen-producto" src="<%= datos[i].url %>">
+              </td>
+              <td>
+                <%= datos[i].nombre %>
+              </td>
+              <td>
+                <%= datos[i].cantidad %>
+              </td>
+              <td>
+                <%= datos[i].total_pagado %>
+              </td>
+              <td>
+                <%= datos[i].nomenclatura %>
+              </td>
+              <td>
+                <%= datos[i].fecha %>
+              </td>
+              <td>
+                <div class="input-group">
+                  <a href="/calificar/<%= datos[i].id %>" type="button" class="btn btn-dark">Calificar</a>
+                </div>
+              </td>
+            </tr>
+            <% } %>
+            <% } else { %>
+            <tr>
+              <th>
+                <p>Usted no ha comprado productos</p>
+              </th>
+            </tr>
+            <% } %>
+            </tr>
+          </table>
+        </div>
+        <%- include('footer') -%>
+      </div>
+    </article>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+
+</html>

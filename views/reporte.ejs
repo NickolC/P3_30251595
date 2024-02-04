@@ -131,6 +131,9 @@
           <th>
             <p>Destacado</p>
           </th>
+          <th>
+            <p>Calificacion</p>
+          </th>
         </tr>
         <tr>
           <% if (datos) { %>
@@ -146,6 +149,13 @@
           <td><%= datos[i].categoriaNombre %></td>
           <td><img class="imagen-producto" src="<%= datos[i].url %>"></td>
           <td><%= datos[i].destacado %></td>
+          <td>
+            <% if (datos[i].promedio > 0) {%>
+                <%= datos[i].promedio %>
+            <% } else{%>
+                <p>Sin Calificar</p>
+            <% }%>
+        </td>
         </tr>
         <% } %>
         <% } else { %>

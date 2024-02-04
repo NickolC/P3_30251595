@@ -2,6 +2,23 @@
 <html lang="en">
 
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QHKDKC0T4K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-QHKDKC0T4K');
+  </script>
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MakeUp Valenciano">
+  <meta property="og:url" content="https://www.MakeUpValenciano.com">
+  <meta property="og:image" content="https://static.vecteezy.com/system/resources/previews/020/520/941/large_2x/makeup-icon-vector.jpg">
+  <meta property="og:description" content="Tienda Online de venta de maquillajes para tu gusto y uso personal">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MakeUp Valenciano</title>
@@ -91,59 +108,77 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav nav justify-content-center">
-                <li class="nav-item">
-                  <form action="/filtroctg" method="post">
-                    <select name="categoria" id="categoria">
-                        <option value="" >--Categorias--</option>
-                        <% if (datos) { %>
-                            <% for (let i = 0; i < datos.length; i++){  %>
-                                <% if (datos) { %>
-                                    <option value="<%= datos[i].categoriaNombre %>" name="categoria" id="categoria"><%= datos[i].categoriaNombre %></option>
-                                <% } %>
-                            <% } %>
-                        <% } else { %>
-                            <option value="">No existe categora en el sistema</option>
-                        <% }   %>
-                    </select>
-                    <button type="submit" class="btn btn-dark">Filtrar productos</button>
-                </form>
+            <li class="nav-item">
+              <form action="/filtroctg" method="post">
+                <select name="categoria" id="categoria">
+                  <option value="">--Categorias--</option>
+                  <% if (datos) { %>
+                  <% for (let i = 0; i < datos.length; i++){  %>
+                  <% if (datos) { %>
+                  <option value="<%= datos[i].categoriaNombre %>" name="categoria" id="categoria"><%= datos[i].categoriaNombre %></option>
+                  <% } %>
+                  <% } %>
+                  <% } else { %>
+                  <option value="">No existe categora en el sistema</option>
+                  <% }   %>
+                </select>
+                <button type="submit" class="btn btn-dark">Filtrar productos</button>
+              </form>
 
-                <form action="/filtromarca" method="post">
-                  <select name="marca" id="marca">
-                      <option value="" >--Marcas--</option>
-                      <% if (datos) { %>
-                          <% for (let i = 0; i < datos.length; i++){  %>
-                              <% if (datos) { %>
-                                  <option value="<%= datos[i].marca %>"><%= datos[i].marca %></option>
-                              <% } %>
-                          <% } %>
-                      <% } else { %>
-                          <option value="">No existe marca en el sistema</option>
-                      <% }   %>
-                  </select>
-                  <button type="submit" class="btn btn-dark" >Filtrar productos</button>
+              <form action="/filtromarca" method="post">
+                <select name="marca" id="marca">
+                  <option value="">--Marcas--</option>
+                  <% if (datos) { %>
+                  <% for (let i = 0; i < datos.length; i++){  %>
+                  <% if (datos) { %>
+                  <option value="<%= datos[i].marca %>"><%= datos[i].marca %></option>
+                  <% } %>
+                  <% } %>
+                  <% } else { %>
+                  <option value="">No existe marca en el sistema</option>
+                  <% }   %>
+                </select>
+                <button type="submit" class="btn btn-dark">Filtrar productos</button>
               </form>
 
               <form action="/filtrotn" method="post">
                 <select name="tono" id="tono">
-                    <option value="" >--Tonos--</option>
-                    <% if (datos) { %>
-                        <% for (let i = 0; i < datos.length; i++){  %>
-                            <% if (datos) { %>
-                                <option value="<%= datos[i].tono %>"><%= datos[i].tono %></option>
-                            <% } %>
-                        <% } %>
-                    <% } else { %>
-                        <option value="0">No existe tono en el sistema</option>
-                    <% }   %>
+                  <option value="">--Tonos--</option>
+                  <% if (datos) { %>
+                  <% for (let i = 0; i < datos.length; i++){  %>
+                  <% if (datos) { %>
+                  <option value="<%= datos[i].tono %>"><%= datos[i].tono %></option>
+                  <% } %>
+                  <% } %>
+                  <% } else { %>
+                  <option value="0">No existe tono en el sistema</option>
+                  <% }   %>
                 </select>
                 <button type="submit" class="btn btn-dark">Filtrar productos</button>
-            </form>
+              </form>
+
+              <form action="/filtroprm" method="post">
+                <select name="promedio" id="promedio">
+                  <option value="">--Calificacion--</option>
+                  <% for (let i=0; i < 6; i++){ %>
+                  <option value="<%= i %>" name="promedio" id="promedio">
+                    <%= i %>
+                  </option>
+                  <% } %>
+                </select>
+                <button type="submit" class="btn btn-dark">Filtrar productos</button>
+              </form>
             </li>
           </ul>
         </div>
 
-        
+
+      </div>
+
+      <div class="d-flex align-items-center">
+        <button data-mdb-ripple-init type="button" class="btn btn-secondary me-3">
+          <a class="nav-link btn btn-outline-primary" href="/productos-comprados"><strong>Productos Comprados</a>
+        </button>
       </div>
 
       <div class="d-flex align-items-center">
@@ -158,7 +193,7 @@
         </button>
       </div>
 
-        
+
       </div>
     </nav>
   </header>
@@ -179,28 +214,29 @@
     </div>
     <div class="card-body  justify-content-center ">
       <div class="row row-cols-1 row-cols-md-3 g-4">
-          <% if (datos.length > 0) {%>
-          <% for(let i = 0; i < datos.length; i++) { %>
-          <div class="col custom-col">
-            <a href="/info/<%= datos[i].id%>">
-              <div class="card bg-light mb-3 text-center h-100 shadow-border ">
-                <div class="card-header">
-                  <h4 style="margin-top: 10px; font-weight: bold;"><%= datos[i].productoNombre %></h4>
-                </div>
-                <div class="card-body">
-                  <img src="<%= datos[i].url %>" class="card-img-top shadow-border" style="max-height: 200px; max-width: 200px;">
-                </div>
-                <div class="card-footer">
-                  <h4 style="font-weight: bold;"><%= datos[i].precio %> $</h4>
-                </div>
+        <% if (datos.length > 0) {%>
+        <% for(let i = 0; i < datos.length; i++) { %>
+        <div class="col custom-col">
+          <a href="/info/<%= datos[i].id%>">
+            <div class="card bg-light mb-3 text-center h-100 shadow-border ">
+              <div class="card-header">
+                <h4 style="margin-top: 10px; font-weight: bold;"><%= datos[i].productoNombre %></h4>
               </div>
-            </a>
-          </div>
+              <div class="card-body">
+                <img src="<%= datos[i].url %>" class="card-img-top shadow-border" style="max-height: 200px; max-width: 200px;">
+              </div>
+              <div class="card-footer">
+                <h4 style="font-weight: bold;"><%= datos[i].precio %> $</h4>
+                <h4 style="font-weight: bold;"><%= datos[i].promedio %> Estrellas</h4>
+              </div>
+            </div>
+          </a>
+        </div>
 
-          <% } %>
-          <% } else { %>
-          <p>No hay productos en el sistema</p>
-          <% } %>
+        <% } %>
+        <% } else { %>
+        <p>No hay productos en el sistema</p>
+        <% } %>
       </div>
       <%- include('footer') -%>
     </div>
